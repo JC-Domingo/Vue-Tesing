@@ -1,8 +1,23 @@
-import Vue from 'vue';
+import Vue from 'vue/dist/vue.js';
 import test from 'ava';
 
 import Notification from '../src/Notification';
 
-test('it renders a notification', t => {
-	new Vue(Notification).$mount();
+let vm;
+
+test.beforeEach(t => {
+	let N = Vue.extend(Notification);
+
+	vm = new N({ propsData: {
+		message: 'Foobar'
+	}}).$mount();
+
+})
+
+test('it renders a notification', t => {    
+    t.is(vm.$el.textContent, 'FOOBAR');
+});
+
+test('that is computes the notification', t => {    
+    t.is(vm.notification, 'FOOBAR');
 });

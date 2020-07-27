@@ -1,9 +1,11 @@
 export default {
-	template: '<div>{{ message }}</div>',
+	template: '<div><h1>{{ notification }}</h1></div>',
 
-	data() {
-		return {
-			message: 'Hello World'
-		};
+	props: ['message'],
+
+	computed: {
+		notification() {
+			return this.message.toUpperCase();
+		}
 	}
 };
